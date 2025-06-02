@@ -1,0 +1,10 @@
+I need to select database for a new project. This is my application requirements:
+
+- Social platform with millions of users
+- Need to store profiles, posts, and connections between users
+- High data read speed required
+- Expected 80% read operations, 20% write operations
+- Scalability is important as the user base grows
+
+Important! Your answer should use Chain-of-Thought reasoning.
+The analysis that you got using your prompt should align with all the requirements stated in task description.
