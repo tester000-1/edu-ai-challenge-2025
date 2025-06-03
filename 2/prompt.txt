@@ -1,0 +1,8 @@
+I'm a QA specialist and I find a bug related to frontend web application. Precondition: 
+user is loggged with valid credentials via Safari. The problem is that user cannot logout and the logout button doesn't response. Create structured ticket for issue of type bug into Jira. The issue should contains:
+- Title
+- Description
+- Steps to Reproduce
+- Expected vs Actual Behavior
+- Environment (if known)
+- Severity or Impact

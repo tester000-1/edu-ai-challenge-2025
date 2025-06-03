@@ -1,0 +1,45 @@
+Here's a structured Jira bug ticket based on your description:
+
+---
+
+**Title:**
+Logout Button Not Responding in Safari After Successful Login
+
+---
+
+**Description:**
+After logging in with valid credentials using the Safari browser, the logout button becomes unresponsive. This issue prevents users from securely ending their session, posing a potential security risk and negatively impacting the user experience.
+
+---
+
+**Steps to Reproduce:**
+
+1. Open the web application in Safari browser (macOS or iOS).
+2. Log in using valid user credentials.
+3. Wait for the dashboard or homepage to load completely.
+4. Click on the "Logout" button in the navigation/menu bar.
+
+---
+
+**Expected Behavior:**
+Clicking the "Logout" button should log the user out of the session and redirect them to the login page (or homepage, depending on implementation).
+
+**Actual Behavior:**
+Clicking the "Logout" button does not trigger any visible response. The user remains logged in and there is no navigation or indication of logout action occurring.
+
+---
+
+**Environment:**
+
+* Browser: Safari (macOS Ventura 13.4 / iOS 17.4.1)
+* Application Version: \[Insert version if known]
+* Affected user roles: \[e.g., Regular user, Admin, etc.]
+* Occurs consistently on Safari, not reproducible on Chrome or Firefox.
+
+---
+
+**Severity/Impact:**
+**High** – The user is unable to log out, which may result in security vulnerabilities (e.g., session hijacking if device is shared) and user frustration. This is a blocker for proper session handling on Safari.
+
+---
+
