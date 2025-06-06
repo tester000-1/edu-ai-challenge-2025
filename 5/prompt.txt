@@ -1,0 +1,35 @@
+Analyzing the feedback examples above using the following techniques and structure:
+
+Test data:
+"The app is super intuitive and runs smoothly!" — Positive
+"It’s okay, but sometimes it lags." — Neutral
+"I hate the latest update. Everything is broken!" — Negative
+"I like the new design." — Positive
+
+Then use Chain-of-Thought Reasoning to analyze the feedback only if it is relevant to the product. If not, set isRelevant to false and skip further analysis.
+Format the result as JSON format like this example: 
+
+{
+  "sentiment": "string (Positive|Negative|Neutral|Mixed)",
+  "isRelevant": boolean,
+  "mainSubject": "string or null",
+  "positives": ["array of strings"],
+  "painPoints": ["array of strings"],
+  "improvementSuggestions": ["array of strings"],
+  "featuresMentioned": ["array of strings"],
+  "userExpertise": "string (Experienced|Novice|Unknown)"
+}
+
+real data:
+Feedback 1: "I've never been a fan of the GPX shape and to me, it feels like I am holding a potato. The front hump felt a bit intrusive on the backside of my knucles. Ergonomics are better on the Viper V3 PRO specially on the rear portion of the mouse and the side part where you rest/grip your fingers to hold the mouse."
+
+Feedback 2: "If you are a GPX lover, I think they managed to improve everything I thought It was wrong about the GPX series, they made the shape better, they fixed the side buttons, scrolling wheel is better, gliding is faster and feels like the perfect compromise between control and speed."
+
+Feedback 3: "I can't say I'm a fan of the material used for the shell, either—the plastic attracts fingerprints like a grease magnet and the mouse needed to be furiously cleaned, repeatedly, before any pictures could be taken. It also feels a bit on the cheap side, although that's mostly down to Razer's decision to make the Viper V3 Pro as light as possible."
+
+
+Now give me the results of real data in a single JSON format. No comments are allowed. Don't forget to use Chain-of-Thought Reasoning in the process. 
+
+
+
+

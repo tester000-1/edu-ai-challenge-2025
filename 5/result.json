@@ -1,0 +1,32 @@
+[
+  {
+    "sentiment": "Negative",
+    "isRelevant": true,
+    "mainSubject": "GPX and Viper V3 PRO mouse ergonomics",
+    "positives": ["Ergonomics are better on the Viper V3 PRO", "Rear portion and side grip are improved"],
+    "painPoints": ["GPX shape feels like holding a potato", "Front hump is intrusive on knuckles"],
+    "improvementSuggestions": ["Improve front hump ergonomics", "Redesign GPX shape for better hand feel"],
+    "featuresMentioned": ["Shape", "Ergonomics", "Rear portion", "Side grip"],
+    "userExpertise": "Experienced"
+  },
+  {
+    "sentiment": "Positive",
+    "isRelevant": true,
+    "mainSubject": "Improvements in GPX series mouse",
+    "positives": ["Shape is better", "Side buttons are fixed", "Scrolling wheel is better", "Gliding is faster", "Good compromise between control and speed"],
+    "painPoints": [],
+    "improvementSuggestions": [],
+    "featuresMentioned": ["Shape", "Side buttons", "Scrolling wheel", "Gliding", "Control", "Speed"],
+    "userExpertise": "Experienced"
+  },
+  {
+    "sentiment": "Negative",
+    "isRelevant": true,
+    "mainSubject": "Material quality of Viper V3 Pro mouse",
+    "positives": [],
+    "painPoints": ["Plastic attracts fingerprints", "Requires frequent cleaning", "Feels cheap due to lightweight design"],
+    "improvementSuggestions": ["Use higher quality plastic", "Reduce fingerprint retention", "Improve material feel without adding too much weight"],
+    "featuresMentioned": ["Material", "Plastic shell", "Weight"],
+    "userExpertise": "Experienced"
+  }
+]
