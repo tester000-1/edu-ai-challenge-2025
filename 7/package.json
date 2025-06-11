@@ -1,0 +1,47 @@
+{
+  "name": "sea-battle-game",
+  "version": "2.0.0",
+  "description": "A modernized Sea Battle (Battleship) game implemented in JavaScript with ES6+ features",
+  "main": "seabattle.js",
+  "type": "module",
+  "scripts": {
+    "start": "node seabattle.js",
+    "dev": "node seabattle.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {},
+    "collectCoverageFrom": [
+      "seabattle.js",
+      "!node_modules/**"
+    ],
+    "coverageReporters": ["text", "lcov", "html"],
+    "coverageThreshold": {
+      "global": {
+        "statements": 60,
+        "branches": 60,
+        "functions": 60,
+        "lines": 60
+      }
+    }
+  },
+  "keywords": [
+    "game",
+    "battleship",
+    "sea-battle",
+    "console-game",
+    "javascript",
+    "es6"
+  ],
+  "author": "Modernized Sea Battle Game",
+  "license": "MIT"
+} 
