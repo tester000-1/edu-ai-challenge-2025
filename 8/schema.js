@@ -217,6 +217,15 @@ class ValidationUtils {
     return false;
   }
 
+  static isMissing(value) {
+    if (value === null || value === undefined) return true;
+    if (typeof value === 'string') return false; // Present even if empty
+    if (value instanceof Date) return false; // Date objects are never missing
+    if (Array.isArray(value)) return value.length === 0;
+    if (typeof value === 'object') return Object.keys(value).length === 0;
+    return false;
+  }
+
   /**
    * Type checking utilities
    */
@@ -321,7 +330,7 @@ class Validator {
   validate(value, fieldPath = '', context = {}) {
     try {
       // Handle optional fields
-      if (ValidationUtils.isEmpty(value) && value !== false && value !== 0) {
+      if (ValidationUtils.isMissing(value) && value !== false && value !== 0) {
         if (this.#isOptional) {
           return new ValidationResult(true, [], undefined, this.#metadata);
         }
@@ -597,17 +606,13 @@ class StringValidator extends Validator {
     const errors = [];
     let stringValue = value;
 
-    // Type check and conversion
+    // Type check - strict string validation
     if (!ValidationUtils.isString(value)) {
-      if (value != null && ValidationUtils.isFunction(value.toString)) {
-        stringValue = value.toString();
-      } else {
-        return new ValidationResult(
-          false,
-          [this._createError('Must be a string', fieldPath, value, 'TYPE_ERROR')],
-          value
-        );
-      }
+      return new ValidationResult(
+        false,
+        [this._createError('Must be a string', fieldPath, value, 'TYPE_ERROR')],
+        value
+      );
     }
 
     // Apply transformations
@@ -766,12 +771,8 @@ class NumberValidator extends Validator {
     const errors = [];
     let numValue = value;
 
-    // Type conversion and validation
-    if (ValidationUtils.isString(value)) {
-      numValue = Number(value);
-    }
-
-    if (!ValidationUtils.isNumber(numValue)) {
+    // Strict type validation - no string conversion
+    if (!ValidationUtils.isNumber(value)) {
       return new ValidationResult(
         false,
         [this._createError('Must be a valid number', fieldPath, value, 'TYPE_ERROR')],
@@ -957,20 +958,26 @@ class DateValidator extends Validator {
     const errors = [];
     let dateValue = value;
 
-    // Type conversion
-    if (!ValidationUtils.isDate(dateValue)) {
-      if (!this._allowString) {
+    // Type check and conversion
+    if (ValidationUtils.isDate(value)) {
+      dateValue = value;
+    } else if (this._allowString && typeof value === 'string') {
+      dateValue = new Date(value);
+      // Check if conversion resulted in valid date
+      if (!ValidationUtils.isDate(dateValue)) {
         return new ValidationResult(
           false,
-          [this._createError('Must be a Date object', fieldPath, value, 'TYPE_ERROR')],
+          [this._createError('Must be a valid date', fieldPath, value, 'INVALID_DATE')],
           value
         );
       }
-      dateValue = new Date(value);
-    }
-
-    // Validity check
-    if (!ValidationUtils.isDate(dateValue)) {
+    } else if (!this._allowString) {
+      return new ValidationResult(
+        false,
+        [this._createError('Must be a Date object', fieldPath, value, 'TYPE_ERROR')],
+        value
+      );
+    } else {
       return new ValidationResult(
         false,
         [this._createError('Must be a valid date', fieldPath, value, 'INVALID_DATE')],

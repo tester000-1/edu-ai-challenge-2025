@@ -26,7 +26,7 @@
 
 1. Clone the repository.
 2. Set your OpenAI API key as an environment variable:
-3. Run the required script with your API key
+3. Run the required script with your API key instead of <enter_your_api_key>
 
 bash
 ```bash
