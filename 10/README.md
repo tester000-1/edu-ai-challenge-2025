@@ -40,40 +40,23 @@ Instead of writing filtering logic manually, this app sends the product list and
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/function-calling-java.git
-cd function-calling-java
+git clone https://github.com/tester000-1/edu-ai-challenge-2025/tree/master/10.git
+cd edu-ai-challenge-2025/10/
 ```
 
-### 2. Build the project
+### 2. Run the application
 
+
+- Run the required script with your API key instead of <enter_your_api_key>
+
+bash
 ```bash
-./mvnw clean install
+./mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-Dspring.ai.openai.api-key=<enter_your_api_key>"
 ```
 
-### 3. Run the application
-
-```bash
-./mvnw spring-boot:run
-```
-
-Or run the compiled jar:
-
-```bash
-java -jar target/function-calling-0.0.1-SNAPSHOT.jar
-```
-
-### 4. Enter prompts in the terminal
-
-You'll be prompted to:
-
-* Enter your **OpenAI API key**
-* Enter your **product filter query** (natural language)
-
-Example:
-
-```text
-Enter your OpenAI API key: sk-...
-Enter your product search query: Show me electronics under $300 that are in stock and highly rated
+cmd
+```cmd
+mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-Dspring.ai.openai.api-key=<enter_your_api_key>"
 ```
 
 ---
@@ -96,20 +79,6 @@ Enter your product search query: Show me electronics under $300 that are in stoc
 
 ---
 
-## 🧪 Testing Product Input
-
-Edit `products.json` to test with your own data:
-
-```json
-[
-  { "name": "Wireless Headphones", "category": "Electronics", "price": 99.99, "rating": 4.5, "in_stock": true },
-  { "name": "Gaming Laptop", "category": "Electronics", "price": 1299.99, "rating": 4.8, "in_stock": false },
-  { "name": "Smart Watch", "category": "Electronics", "price": 199.99, "rating": 4.6, "in_stock": true }
-]
-```
-
----
-
 ## 💬 Example Prompts
 
 * `I want cheap electronics in stock`
@@ -127,28 +96,6 @@ Edit `products.json` to test with your own data:
 
 ---
 
-Let me know if you'd like a version of this as a `README.md` file download or with GitHub Actions support.
-
-
-
-
-
-
-## 🚀 How to Run
-
-1. Clone the repository.
-2. Set your OpenAI API key as an environment variable:
-3. Run the required script with your API key instead of <enter_your_api_key>
-
-bash
-```bash
-./mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-Dspring.ai.openai.api-key=<enter_your_api_key>"
-```
-
-cmd
-```cmd
-mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-Dspring.ai.openai.api-key=<enter_your_api_key>"
-```
 
 ## 🔍 Service Analyzer Preview
 
