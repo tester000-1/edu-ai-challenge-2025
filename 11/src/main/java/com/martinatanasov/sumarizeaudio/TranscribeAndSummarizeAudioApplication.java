@@ -29,7 +29,6 @@ public class TranscribeAndSummarizeAudioApplication implements CommandLineRunner
 	private final TranscriptionService transcriptionService;
 	private final AudioFileUtils audioFileUtils;
 	private final FileWriter fileWriter;
-	private final String ERROR_MESSAGE = "", ERROR_MESSAGE_INDEX = "";
 
 	public static void main(String[] args) {
 		SpringApplication.run(TranscribeAndSummarizeAudioApplication.class, args);
@@ -37,30 +36,22 @@ public class TranscribeAndSummarizeAudioApplication implements CommandLineRunner
 
 	@Override
 	public void run(String... args) throws Exception {
-		boolean isEnabledStorageMode = false;
 		final Scanner sc = new Scanner(System.in);
 		final List<Path> records = audioFileUtils.getValidAudioFiles();
-		if (records != null && records.size() > 0 ) {
-			isEnabledStorageMode = true;
+		if (records != null && records.size() > 0) {
 			System.out.println("\nSelect audio record index");
 			for (int i = 0; i < records.size(); i++) {
 				System.out.println((i + 1) +". " + records.get(i).getFileName());
 			}
 		}
 		Integer select;
-		String input;
 		// Ask user for valid file index
 		while (true) {
-			input = sc.nextLine();
-
-			if (isValidFilepath(input)) {
-				select = null;
-				break;
-			}
+			String input = sc.nextLine();
 
 			try {
 				select = Integer.parseInt(input.trim());
-				if (isEnabledStorageMode && (select >= 1 && select <= records.size())) {
+				if (select >= 1 && select <= records.size()) {
 					break; // Exit loop if parsing succeeds
 				} else {
 					System.out.println("❌ Invalid input. Please enter a valid index.");
@@ -70,10 +61,8 @@ public class TranscribeAndSummarizeAudioApplication implements CommandLineRunner
 			}
 		}
 		String transcription, summary;
-		if (select != null || input != null) {
+		if (select != null) {
 			try {
-				final String fileName = select == null ? input : "static/audio/" + records.get(select - 1).getFileName();
-
 				System.out.println("\nSelected file: " + records.get(select - 1) + "\n");
 				transcription = transcriptionService.transcribe("static/audio/" + records.get(select - 1).getFileName());
 				fileWriter.createOrUpdateFile(OutputFile.TRANSCRIPTION, transcription);
@@ -100,21 +89,6 @@ public class TranscribeAndSummarizeAudioApplication implements CommandLineRunner
 		}
 
 		quit();
-	}
-
-
-
-	private boolean isValidFilepath(final String filePath) {
-		final File file = new File(filePath);
-		if (!file.exists()) {
-			return false;
-		} else if (!file.isFile()) {
-			return false;
-		} else if (!file.canRead()) {
-			return false;
-		} else {
-			return true;
-		}
 	}
 
 	private void quit() {
