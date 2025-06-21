@@ -1,0 +1,14 @@
+{
+  "word_count" : 73,
+  "speaking_speed_wpm" : 179,
+  "frequently_mentioned_topics" : [ {
+    "topic" : "drift",
+    "mentions" : 8
+  }, {
+    "topic" : "fast and furious",
+    "mentions" : 4
+  }, {
+    "topic" : "Tokyo",
+    "mentions" : 2
+  } ]
+}
